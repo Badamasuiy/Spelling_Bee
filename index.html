@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <title>Jungle Spelling Adventure</title>
+    <style>
+        body {
+            background-image: url('https://source.unsplash.com/random/1600x900?jungle');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Luckiest Guy', cursive;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        #header {
+            background: rgba(34, 139, 34, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px #000;
+            color: #FFEB3B; /* Bright yellow for visibility */
+        }
+
+        .button-jungle {
+            background-color: #FF5722; /* Bright orange button color */
+            border: 2px solid #FFFFFF;
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 2px #000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button-jungle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .animated-item {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translatey(0px); }
+            50% { transform: translatey(-10px); }
+            100% { transform: translatey(0px); }
+        }
+
+        .jungle-text {
+            font-family: 'Shadows Into Light', cursive;
+            color: #FFEB3B; /* Bright yellow for better visibility */
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        #timer {
+            background-color: #4CAF50; /* Bright green background for timer */
+            color: white;
+            border: 2px solid #FFFFFF;
+            text-shadow: 2px 2px 4px #000;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center">
+    <header id="header" class="py-5 w-full text-center text-5xl jungle-text">
+        Jungle Spelling Adventure 🌴
+    </header>
+
+    <div id="image-container" class="my-8 relative w-full flex justify-center">
+        <img id="current-image" src="" alt="Spelling Image" class="max-w-xs rounded-lg shadow-lg animated-item">
+    </div>
+    
+    <div id="spelling-boxes" class="my-5 flex justify-center space-x-4 text-4xl jungle-text"></div>
+    <div id="alphabet-container" class="grid grid-cols-7 gap-4 mx-5 my-5"></div>
+    
+    <div id="timer" class="text-3xl font-bold my-4 py-2 px-4 rounded-full">60</div>
+    
+    <div id="control-buttons" class="my-5 space-x-4">
+        <button id="cancel-button" class="button-jungle py-3 px-5 rounded">Cancel Last</button>
+        <button id="clear-button" class="button-jungle py-3 px-5 rounded">Clear</button>
+        <button id="submit-button" class="button-jungle py-3 px-5 rounded hidden">Submit</button>
+    </div>
+    
+    <div id="feedback-section" class="hidden text-4xl font-semibold my-5 jungle-text"></div>
+    
+    <button id="next-button" class="hidden button-jungle py-3 px-5 rounded">Next</button>
+    
+    <div id="end-game-section" class="hidden mt-10 text-center jungle-text">
+        <h2 class="text-4xl font-semibold text-yellow-400">🎊 You Finished the Adventure! 🎊</h2>
+        <button id="restart-button" class="button-jungle py-3 px-5 rounded mx-2">Restart</button>
+        <button id="quit-button" class="button-jungle py-3 px-5 rounded mx-2">Quit</button>
+    </div>
+    
+    <div id="report-section" class="hidden mt-10 text-white jungle-text text-center">
+        <h2 class="text-3xl font-semibold text-yellow-400">📜 Your Adventure Report</h2>
+        <ul id="report-list" class="list-none p-0 mt-3 text-2xl"></ul>
+    </div>
+    
+    <audio id="correct-sound" src="sounds/correct.mp3"></audio>
+    <audio id="incorrect-sound" src="sounds/incorrect.mp3"></audio>
+    <audio id="ambient-sound" src="sounds/jungle-ambient.mp3" loop autoplay></audio>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
